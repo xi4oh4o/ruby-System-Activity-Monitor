@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruby System Monitor</title>
+</head>
+<body>
+  <h1><span style="color: #c52f24">Ruby</span> System Monitor</h1>
+  <hr>
+  <h3><span style="color: #70649A">CPU</span> Info</h3>
+  <table>
+    <tr>
+      <td>Version: <%= Sys::CPU::VERSION.downcase %></td>
+    </tr>
+    <tr>
+      <td>Load Average: <%= Sys::CPU.load_avg.join(", ") %></td>
+    </tr>
+    <tr>
+      <td>Processor Info: <%= Sys::CPU.processors[0].to_a %><hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Disk</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_diskused %> Gigabytes Used<hr></td>
+    </tr>
+    <tr>
+      <td><%= @usw.uw_diskused_perc %> Perventage of Gigabytes Used<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">CPU</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_cpuused %>% CPU Used<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Connections</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_tcpused %> TCP Connections Used<hr></td>
+    </tr>
+    <tr>
+      <td><%= @usw.uw_udpused %> UDP Connections Used<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Memory</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_memused %>% Active Memory Used<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Average Load</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_load %> Average System Load Of The Past Minute<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Bandwidth</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_bandrx %> Mbit/s Current Bandwidth Received<hr></td>
+    </tr>
+    <tr>
+      <td><%= @usw.uw_bandtx %> Mbit/s Current Bandwidth Transmitted<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">IO</span> Monitor</h3>
+  <table>
+    <tr>
+      <td><%= @usw.uw_diskioreads %>/s Current Disk Reads Completed<hr></td>
+    </tr>
+    <tr>
+      <td><%= @usw.uw_diskiowrites %>/s Current Disk Writes Completed<hr></td>
+    </tr>
+  </table>
+  <h3><span style="color: #70649A">Top Ten Processes</span> Monitor</h3>
+  <table>
+    <tr>
+      <td>Top Ten Processes By CPU Consumption: <%= @usw.uw_cputop %><hr></td>
+    </tr>
+    <tr>
+      <td>Top Ten Processes By Memory Consumption: <%= @usw.uw_memtop %><hr></td>
+    </tr>
+  </table>
+  <div>
+    <h6>coding by <a href="https://twitter.com/XHs">@XHs</a> | <a href="https://github.com/xi4oh4o/ruby-monitor">Github</a></h6>
+  </div>
+</body>
+</html>
